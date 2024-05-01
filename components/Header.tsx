@@ -20,7 +20,7 @@ return (
                     </form>
             </div>
 
-            <div className="">
+            <div className="flex items-center space-x-4 px-6">
                 <Link href='/' className='icon'>
                     <HomeIcon/>  
                     <p>Home</p>
@@ -38,12 +38,12 @@ return (
                     <p>Messages</p>
                 </Link> 
                 {/* User button based on auth */}
-                <button className='flex items-center'>
+                <button className='flex flex-col items-center icon'>
                     <Image 
-                        className='rounded-full'
+                        className='rounded-full '
                         src="/profile.jpg" 
-                        width={40} 
-                        height={40} 
+                        width={24} 
+                        height={24} 
                         alt='profile'
                     />
                     <p>Me</p>

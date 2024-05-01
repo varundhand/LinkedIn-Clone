@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import { ClerkProvider } from '@clerk/nextjs'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,21 +17,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        {/* Toast Notifications */}
+    <ClerkProvider>
+      <html lang="en">
+        <body className="min-h-screen flex flex-col">
+          {/* Toast Notifications */}
 
-        {/* Header */}
-        <header>
-          <Header />
-        </header>
+          {/* Header */}
+          <header className="border-b sticky top-0 bg-white z-50 shadow-sm">
+            <Header />
+          </header>
 
-        {/* Main */}
-        <div className="">
-          {children}
-        </div>
-        
-      </body>
-    </html>
+          {/* Main */}
+          <div className="bg-[#f4f2ee] flex-1 w-full">
+            {children}
+          </div>
+          
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
