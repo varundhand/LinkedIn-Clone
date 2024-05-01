@@ -12,6 +12,9 @@
     .icon p {
       @apply text-xs text-[#717171]
     }
+    .icon div{
+      @apply flex flex-col items-center
+    }
   }
 
   @layer base {

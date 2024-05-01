@@ -2,6 +2,8 @@ import { Briefcase, HomeIcon, MessageSquare, SearchIcon, UsersIcon } from 'lucid
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { SignInButton, SignedIn,SignedOut, UserButton } from '@clerk/nextjs'
+import { Button } from './ui/button'
 
 const Header = () => {
 return (
@@ -22,32 +24,40 @@ return (
 
             <div className="flex items-center space-x-4 px-6">
                 <Link href='/' className='icon'>
-                    <HomeIcon/>  
-                    <p>Home</p>
+                    <div>
+                        <HomeIcon className=''/>  
+                        <p>Home</p>
+                    </div>
                 </Link> 
                 <Link href='/' className='icon'>
-                    <UsersIcon/>  
-                    <p>Network</p>
+                    <div >
+                        <UsersIcon/>  
+                        <p>Network</p>
+                    </div>
                 </Link> 
                 <Link href='/' className='icon'>
-                    <Briefcase/>  
-                    <p>Jobs</p>
+                    <div >
+                        <Briefcase/>  
+                        <p>Jobs</p>
+                    </div>
                 </Link> 
                 <Link href='/' className='icon'>
-                    <MessageSquare/>  
-                    <p>Messages</p>
+                    <div >
+                        <MessageSquare/>  
+                        <p>Messages</p>
+                    </div>
                 </Link> 
                 {/* User button based on auth */}
-                <button className='flex flex-col items-center icon'>
-                    <Image 
-                        className='rounded-full '
-                        src="/profile.jpg" 
-                        width={24} 
-                        height={24} 
-                        alt='profile'
-                    />
-                    <p>Me</p>
-                </button>
+                <SignedIn>
+                    <UserButton />
+                </SignedIn>
+
+                <SignedOut>
+                    <Button asChild variant='secondary'>
+                        <SignInButton />
+                    </Button>
+                </SignedOut>
+                
             </div>
     </div>
 )
