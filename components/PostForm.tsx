@@ -27,8 +27,8 @@ const PostForm = () => {
     };
 
     return (
-        <div className='mb-2'>
-            <form ref={formRef} className='space-y-2'>
+        <div className='mb-2 sm:p-0 p-2 '>
+            <form ref={formRef} className='space-y-2 bg-white rounded-lg border p-2'>
                 <div className='flex items-center space-x-2'>
                     <Avatar>
                         <AvatarImage src={user?.imageUrl} />
@@ -76,6 +76,8 @@ const PostForm = () => {
                     )}
                 </div>
             </form>
+
+            <hr className='mt-2 border-gray-300 '/>
         </div>
     );
 };
