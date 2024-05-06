@@ -5,17 +5,20 @@ import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { useUser } from '@clerk/nextjs';
 import { Button } from './ui/button';
 import { useRef, useState } from 'react';
+import createPostAction from '@/actions/createPostAction';
 
 const PostForm = () => {
     const formRef = useRef<HTMLFormElement>(null);
     const imageInputRef = useRef<HTMLInputElement>(null);
     const { user } = useUser();
     const [preview, setPreview] = useState<string | null>(null);
+    const [formData, setFormData] = useState<{ text: string, image: string | null }>({ text: '', image: null });
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
             setPreview(URL.createObjectURL(file));
+            setFormData(prevState => ({ ...prevState, image: URL.createObjectURL(file) }));
         }
     };
 
@@ -24,11 +27,33 @@ const PostForm = () => {
         if (imageInputRef.current) {
             imageInputRef.current.value = ''; // Clear file input value
         }
+        setFormData(prevState => ({ ...prevState, image: null }));
     };
+
+    const handleFormInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { value} = e.target;
+        setFormData(prevState => ({ ...prevState, text: value }));
+        console.log(formData)
+
+    }
+
+    const handleFormSubmit = async (e:any) => {  
+        e.preventDefault()
+        setFormData({text: '', image: null});
+        setPreview(null)
+
+        //TODO: check whether the form isnt empty before submitting(edge case)
+        try {
+            // await createPostAction(formData)
+        } catch (error) {
+            console.log('Error creating the post: ', error)
+        }
+
+     }
 
     return (
         <div className='mb-2 sm:p-0 p-2 '>
-            <form ref={formRef} className='space-y-2 bg-white rounded-lg border p-2'>
+            <form ref={formRef} action="" method='post' onSubmit={handleFormSubmit} className='space-y-2 bg-white rounded-lg border p-2'>
                 <div className='flex items-center space-x-2'>
                     <Avatar>
                         <AvatarImage src={user?.imageUrl} />
@@ -41,6 +66,7 @@ const PostForm = () => {
                         type='text'
                         name='postInput'
                         placeholder='Start writing a post...'
+                        onChange={handleFormInputChange}
                         className='flex-1 outline-none rounded-full py-3 px-4 border'
                     />
 

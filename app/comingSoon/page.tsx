@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 const ComingSoon = () => {
   return (
-
+    <div>
       <motion.div
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -14,6 +14,7 @@ const ComingSoon = () => {
       >
         <h1 className="text-4xl font-bold text-center mt-8">Coming Soon</h1>
       </motion.div>
+    </div>
 
   );
 };

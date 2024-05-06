@@ -9,11 +9,11 @@ const Header = () => {
 return (
     <div className="flex items-center p-2 max-w-6xl mx-auto  rounded-lg ">
             <Image 
-                    className='rounded-lg'
-                    src="/LinkedIn_logo_initials.png" 
-                    width={40} 
-                    height={40} 
-                    alt='logo'
+                className='rounded-lg'
+                src="/LinkedIn_logo_initials.png" 
+                width={40} 
+                height={40} 
+                alt='logo'
             />
             <div className="flex-1 ml-2">
                     <form action="" className='flex items-center max-w-96 bg-gray-100 rounded-lg'>
@@ -29,19 +29,19 @@ return (
                         <p>Home</p>
                     </div>
                 </Link> 
-                <Link href='/' className='icon'>
+                <Link href='/comingSoon' className='icon'>
                     <div >
                         <UsersIcon/>  
                         <p>Network</p>
                     </div>
                 </Link> 
-                <Link href='/' className='icon'>
+                <Link href='/comingSoon' className='icon'>
                     <div >
                         <Briefcase/>  
                         <p>Jobs</p>
                     </div>
                 </Link> 
-                <Link href='/' className='icon'>
+                <Link href='/comingSoon' className='icon'>
                     <div >
                         <MessageSquare/>  
                         <p>Messages</p>
