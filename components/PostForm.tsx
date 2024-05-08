@@ -34,7 +34,6 @@ const PostForm = () => {
         const { value} = e.target;
         setFormData(prevState => ({ ...prevState, text: value }));
         console.log(formData)
-
     }
 
     const handleFormSubmit = async (e:any) => {  
@@ -44,7 +43,7 @@ const PostForm = () => {
 
         //TODO: check whether the form isnt empty before submitting(edge case)
         try {
-            // await createPostAction(formData)
+            await createPostAction(formData)
         } catch (error) {
             console.log('Error creating the post: ', error)
         }
