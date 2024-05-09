@@ -13,3 +13,20 @@ export interface IComment extends ICommentBase, Document {
     createdAt: Date,
     updatedAt: Date,
 }
+
+const commentSchema = new Schema<IComment>(
+    {
+        user: {
+            userId: {type: String, required: true},
+            userImage: {type: String, required: true},
+            firstName: {type: String, required: true},
+            lastName: {type: String, required: false},
+        },
+        text: {type: String, required: true},
+    },
+    {
+        timestamps: true,
+    }
+)
+
+export const CommentModel = mongoose.model<IComment>("Comment", commentSchema) 
