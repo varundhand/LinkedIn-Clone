@@ -14,7 +14,7 @@ export interface IComment extends ICommentBase, Document {
     updatedAt: Date,
 }
 
-const commentSchema = new Schema<IComment>(
+const CommentSchema = new Schema<IComment>(
     {
         user: {
             userId: {type: String, required: true},
@@ -29,4 +29,5 @@ const commentSchema = new Schema<IComment>(
     }
 )
 
-export const CommentModel = mongoose.model<IComment>("Comment", commentSchema) 
+// we first check it the comment is already intialized, if not we initialize it
+export const CommentModel = models.Comment ||  mongoose.model<IComment>("Comment", CommentSchema) 

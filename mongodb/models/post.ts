@@ -9,3 +9,9 @@ export interface PostBaseInterface {
     comments?: IComment[],
     likes?: string[],
 }
+
+export interface IPost extends PostBaseInterface, Document {
+    createdAt: Date,
+    updatedAt: Date,
+}
+
